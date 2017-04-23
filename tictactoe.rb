@@ -49,8 +49,13 @@ class Players_c
 	@@player_number=0
 
 	def initialize
+		if @@player_number>1
+			@@player_number=1
+			setup
+		else
 		@@player_number+=1
 		setup
+		end
 	end
 
 	def setup
@@ -94,6 +99,19 @@ class Game
 end
 
 Game.new.play
+
+while true
+	puts "Would you like to start another game? (Y/N)"
+	answer=gets.chomp.upcase
+	if answer=="Y" || answer=="YES"
+		Game.new.play
+	else 
+		puts "Thank you for playing, see you soon!"
+		break
+		exit
+
+	end
+end
 
 
 
